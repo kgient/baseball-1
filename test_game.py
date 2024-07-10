@@ -9,11 +9,13 @@ class TestGame(TestCase):
         self.game = Game()
 
     def test_exception_when_input_is_none(self):
-
         with self.assertRaises(TypeError):
             self.game.guess(None)
 
     def test_exception_when_input_length_is_unmatched(self):
-        with self.assertRaises(TypeError):
+        try:
             self.game.guess("12")
+            self.fail()
+        except TypeError:
+            pass
 
